@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- tailwind and daisyUI cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- daisyUI theme -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- outfit font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+    </style>
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Job Application Tracker</title>
+    <link rel="icon" href="./jobs.png" type="" />
+  </head>
+  <body class="py-[60px] bg-[#F8FAFC]">
+    <header class="max-w-[1110px] mx-auto border-b-2 border-gray-300">
+      <section class="heading mb-5">
+        <h1 class="text-[#002C5C] font-bold text-[32px]">
+          Job Application Tracker
+        </h1>
+      </section>
+      <section class="dashboard grid grid-cols-3 gap-4 mb-[30px]">
+        <div id="total-info" class="info bg-[#FFFFFF] p-5">
+          <h4 class="font-medium text-[14px]">Total</h4>
+          <p class="font-bold text-2xl text-[#002C5C]">8</p>
+        </div>
+        <div id="interview-info" class="info bg-[#FFFFFF] p-5">
+          <h4 class="font-medium text-[14px]">Interview</h4>
+          <p class="font-bold text-2xl text-[#10B981]">0</p>
+        </div>
+        <div id="rejected-info" class="info bg-[#FFFFFF] p-5">
+          <h4 class="font-medium text-[14px]">Rejected</h4>
+          <p class="font-bold text-2xl text-[#EF4444]">0</p>
+        </div>
+      </section>
+    </header>
+  </body>
+</html>
