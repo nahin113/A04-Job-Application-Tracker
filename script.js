@@ -5,7 +5,7 @@ let allSection = document.querySelector("#All");
 let interviewSection = document.querySelector("#Interview");
 let rejectedSection = document.querySelector("#Rejected");
 
-let section = 'ALL'
+let section = "ALL";
 
 // All Section
 
@@ -25,11 +25,10 @@ function availableJobs() {
   }
 }
 
-
 all.addEventListener("click", () => {
   if (allSection.classList.contains("hidden")) {
     allSection.classList.remove("hidden");
-    section = 'ALL'
+    section = "ALL";
   }
 
   if (!interviewSection.classList.contains("hidden")) {
@@ -41,7 +40,6 @@ all.addEventListener("click", () => {
   }
 
   renderJobs();
-  document.querySelector("#available-jobs").innerText = `${jobs.length} jobs`;
 });
 
 // Interview Section
@@ -53,8 +51,7 @@ interview.addEventListener("click", () => {
 
   if (interviewSection.classList.contains("hidden")) {
     interviewSection.classList.remove("hidden");
-    if (interviewList.length > 0) renderInterviewJobs();
-    section = 'INTERVIEW'
+    section = "INTERVIEW";
   }
 
   if (!rejectedSection.classList.contains("hidden")) {
@@ -63,10 +60,6 @@ interview.addEventListener("click", () => {
 
   renderJobs();
   renderInterviewJobs();
-
-  document.querySelector(
-    "#available-jobs"
-  ).innerText = `${interviewList.length} of ${jobs.length} jobs`;
 });
 
 // Rejected Section
@@ -83,16 +76,17 @@ rejected.addEventListener("click", () => {
   if (rejectedSection.classList.contains("hidden")) {
     rejectedSection.classList.remove("hidden");
     if (rejectedList.length > 0) renderRejectedJobs();
-    section = 'REJECTED'
+    section = "REJECTED";
   }
 
   renderJobs();
   renderRejectedJobs();
-
-  document.querySelector(
-    "#available-jobs"
-  ).innerText = `${rejectedList.length} of ${jobs.length} jobs`;
 });
+
+
+
+
+// Array Initializations
 
 const jobs = [
   {
@@ -196,18 +190,17 @@ const rejectedJobContainer = document.querySelector("#Rejected .job-container");
 document.querySelector("#total-info p").innerText = jobs.length;
 
 function renderJobs() {
-    availableJobs()
-     if (jobs.length === 0) {
-         allJobContainer.innerHTML = `
+  availableJobs();
+  if (jobs.length === 0) {
+    allJobContainer.innerHTML = `
          <div class=" px-6 py-28 flex justify-center items-center flex-col">
          <img class="w-[100px]" src="./jobs.png" alt="">
          <h1 class="font-semibold text-[24px] text-[#002C5C]">No jobs available</h1>
          <h1 class="text-[#64748B]">Check back soon for new job opportunities</h1>
          </div>
          `;
-        } else {
-            
-            allJobContainer.innerHTML = "";
+  } else {
+    allJobContainer.innerHTML = "";
     for (const job of jobs) {
       allJobContainer.innerHTML += `
         <div data-id="${job.id}" class="job-card p-6 bg-[#FFFFFF] space-y-5 rounded-lg">
@@ -234,7 +227,7 @@ function renderJobs() {
 }
 
 function renderInterviewJobs() {
-    availableJobs()
+  availableJobs();
   if (interviewList.length === 0) {
     interviewJobContainer.innerHTML = `
         <div class=" px-6 py-28 flex justify-center items-center flex-col">
@@ -273,7 +266,7 @@ function renderInterviewJobs() {
 }
 
 function renderRejectedJobs() {
-    availableJobs()
+  availableJobs();
   if (rejectedList.length === 0) {
     rejectedJobContainer.innerHTML = `
         <div class=" px-6 py-28 flex justify-center items-center flex-col">
@@ -312,13 +305,14 @@ function renderRejectedJobs() {
   document.querySelector("#rejected-info p").innerText = rejectedList.length;
 }
 
+// Loading Jobs in the DOM
 renderJobs();
 
 // Remove Section
 
 allJobContainer.addEventListener("click", (e) => {
   let deleteBtn = e.target.closest("#delete-btn");
-
+  if (!deleteBtn) return;
   let card = deleteBtn.closest(".job-card");
   const cardId = Number(card.dataset.id);
 
@@ -338,42 +332,34 @@ allJobContainer.addEventListener("click", (e) => {
 });
 interviewJobContainer.addEventListener("click", (e) => {
   let deleteBtn = e.target.closest("#delete-btn");
-
+  if (!deleteBtn) return;
   let card = deleteBtn.closest(".job-card");
   const cardId = Number(card.dataset.id);
 
   const index = jobs.findIndex((job) => job.id === cardId);
   const iIndex = interviewList.findIndex((job) => job.id === cardId);
-//   const rIndex = jobs.findIndex((job) => job.id === cardId);
   jobs.splice(index, 1);
   interviewList.splice(iIndex, 1);
-//   rejectedList.splice(rIndex, 1);
 
   renderJobs();
   renderInterviewJobs();
-//   renderRejectedJobs();
-  availableJobs()
 
   document.querySelector("#total-info p").innerText = jobs.length;
   document.getElementById("head-jobs-count").innerText = jobs.length;
 });
 rejectedJobContainer.addEventListener("click", (e) => {
   let deleteBtn = e.target.closest("#delete-btn");
-
+  if (!deleteBtn) return;
   let card = deleteBtn.closest(".job-card");
   const cardId = Number(card.dataset.id);
 
   const index = jobs.findIndex((job) => job.id === cardId);
-//   const iIndex = jobs.findIndex((job) => job.id === cardId);
   const rIndex = rejectedList.findIndex((job) => job.id === cardId);
   jobs.splice(index, 1);
-//   interviewList.splice(iIndex, 1);
   rejectedList.splice(rIndex, 1);
 
   renderJobs();
-//   renderInterviewJobs();
   renderRejectedJobs();
-  availableJobs()
 
   document.querySelector("#total-info p").innerText = jobs.length;
   document.getElementById("head-jobs-count").innerText = jobs.length;
@@ -401,7 +387,6 @@ allJobContainer.addEventListener("click", (e) => {
   renderJobs();
   renderInterviewJobs();
   renderRejectedJobs();
-  availableJobs()
 });
 
 allJobContainer.addEventListener("click", (e) => {
@@ -424,7 +409,6 @@ allJobContainer.addEventListener("click", (e) => {
   renderJobs();
   renderInterviewJobs();
   renderRejectedJobs();
-  availableJobs()
 });
 
 interviewJobContainer.addEventListener("click", (e) => {
@@ -447,7 +431,6 @@ interviewJobContainer.addEventListener("click", (e) => {
   renderJobs();
   renderInterviewJobs();
   renderRejectedJobs();
-  availableJobs()
 });
 
 rejectedJobContainer.addEventListener("click", (e) => {
@@ -470,5 +453,4 @@ rejectedJobContainer.addEventListener("click", (e) => {
   renderJobs();
   renderInterviewJobs();
   renderRejectedJobs();
-  availableJobs()
 });
