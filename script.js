@@ -28,15 +28,21 @@ function availableJobs() {
 all.addEventListener("click", () => {
   if (allSection.classList.contains("hidden")) {
     allSection.classList.remove("hidden");
+    document.getElementById("all-ftr").classList.add('bg-primary');
+    document.getElementById("all-ftr").classList.add('text-white');
     section = "ALL";
   }
 
   if (!interviewSection.classList.contains("hidden")) {
     interviewSection.classList.add("hidden");
+    document.getElementById("intrv-ftr").classList.remove("bg-primary");
+    document.getElementById("intrv-ftr").classList.remove("text-white");
   }
 
   if (!rejectedSection.classList.contains("hidden")) {
     rejectedSection.classList.add("hidden");
+    document.getElementById("rjct-ftr").classList.remove("bg-primary");
+    document.getElementById("rjct-ftr").classList.remove("text-white");
   }
 
   renderJobs();
@@ -47,15 +53,21 @@ all.addEventListener("click", () => {
 interview.addEventListener("click", () => {
   if (!allSection.classList.contains("hidden")) {
     allSection.classList.add("hidden");
+    document.getElementById("all-ftr").classList.remove("bg-primary");
+    document.getElementById("all-ftr").classList.remove("text-white");
   }
 
   if (interviewSection.classList.contains("hidden")) {
     interviewSection.classList.remove("hidden");
+    document.getElementById("intrv-ftr").classList.add("bg-primary");
+    document.getElementById("intrv-ftr").classList.add("text-white");
     section = "INTERVIEW";
   }
 
   if (!rejectedSection.classList.contains("hidden")) {
     rejectedSection.classList.add("hidden");
+    document.getElementById("rjct-ftr").classList.remove("bg-primary");
+    document.getElementById("rjct-ftr").classList.remove("text-white");
   }
 
   renderJobs();
@@ -67,15 +79,21 @@ interview.addEventListener("click", () => {
 rejected.addEventListener("click", () => {
   if (!allSection.classList.contains("hidden")) {
     allSection.classList.add("hidden");
+    document.getElementById("all-ftr").classList.remove("bg-primary");
+    document.getElementById("all-ftr").classList.remove("text-white");
   }
 
   if (!interviewSection.classList.contains("hidden")) {
     interviewSection.classList.add("hidden");
+    document.getElementById("intrv-ftr").classList.remove("bg-primary");
+    document.getElementById("intrv-ftr").classList.remove("text-white");
   }
 
   if (rejectedSection.classList.contains("hidden")) {
     rejectedSection.classList.remove("hidden");
     if (rejectedList.length > 0) renderRejectedJobs();
+    document.getElementById("rjct-ftr").classList.add("bg-primary");
+    document.getElementById("rjct-ftr").classList.add("text-white");
     section = "REJECTED";
   }
 
